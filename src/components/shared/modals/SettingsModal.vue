@@ -91,7 +91,7 @@
 <script>
 import Modal from '@/components/shared/Modal'
 import VSelect from '@/components/shared/v-select'
-import { controlThemes } from '@/constants.js'
+import { controlThemes } from '@/static/constants.js'
 
 export default {
   components: {

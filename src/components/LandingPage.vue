@@ -46,7 +46,6 @@ import RecentFolders from '@/components/LandingPage/RecentFolders'
 import ContinueQuizModal from '@/components/LandingPage/modals/ContinueQuizModal'
 import questionsReader from '@/services/questionsReader'
 import quizMaker from '@/services/quizMaker'
-import { sampleQuiz } from '@/sampleQuiz'
 import fs from 'fs'
 import { promisify } from 'util'
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
@@ -107,9 +106,6 @@ export default {
       this.$router.push({ name: 'quiz', params: { quizObject: quiz } })
       this.$store.dispatch('deleteRecentFolder', quizPath)
       this.$store.dispatch('addNewRecentFolder', quizPath)
-    },
-    sampleQuiz () {
-      this.$router.push({ name: 'quiz', params: { quizObject: JSON.parse(JSON.stringify(sampleQuiz)) } })
     }
   },
   computed: {

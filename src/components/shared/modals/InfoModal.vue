@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { versions } from '@/changelog'
+import { versions } from '@/static/changelog'
 import { shell } from 'electron'
 import Modal from '@/components/shared/Modal'
 const appVersion = require('electron').remote.app.getVersion()
