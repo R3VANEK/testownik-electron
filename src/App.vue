@@ -1,110 +1,36 @@
-<template>
-  <div id="app" :theme="$store.state.theme">
-    <Titlebar
-      :theme="$store.state.theme"
-      :controlsTheme="$store.state.controlsTheme"
-      :reverseControlsLocation="$store.state.reverseControlsLocation"
-    />
-    <SettingsModal v-if="showSettingsModal" @close="showSettingsModal = false"/>
-    <InfoModal v-if="showInfoModal" @close="showInfoModal = false"/>
-    <WhatsNewModal v-if="showWhatsNewModal" @close="showWhatsNewModal = false"/>
-    <transition name="page-component-fade" mode="out-in">
-      <router-view 
-        @showSettings="showSettingsModal = true"
-        @showInfo="showInfoModal = true"
-      />
-    </transition>
-  </div>
-</template>
-
-<script>
-import Titlebar from '@/components/titlebar/Titlebar'
-import SettingsModal from '@/components/shared/modals/SettingsModal'
-import InfoModal from '@/components/shared/modals/InfoModal'
-import WhatsNewModal from '@/components/shared/modals/WhatsNewModal'
-import settings from 'electron-settings'
-// import { shell } from 'electron'
-const appVersion = require('electron').remote.app.getVersion()
-
-export default {
-  name: 'testownik-electron',
-  components: {
-    Titlebar,
-    SettingsModal,
-    InfoModal,
-    WhatsNewModal
-  },
-  data () {
-    return {
-      showSettingsModal: false,
-      showInfoModal: false,
-      showWhatsNewModal: false
-    }
-  },
-  mounted () {
-    if (settings.get('lastVersion') !== appVersion) {
-      this.showWhatsNewModal = true
-      settings.set('lastVersion', appVersion)
-    }
-    // shell.on('click', 'a[href^="http"]', (event) => {
-    //   alert('mamcie')
-    //   event.preventDefault()
-    //   shell.openExternal(this.href)
-    // })
-  }
-}
+<script setup lang="ts">
+// This starter template is using Vue 3 <script setup> SFCs
+// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
+import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
-<style lang="scss">
-@import "@/style/_colors.scss";
-@import "@/style/themes.scss";
+<template>
+  <img alt="Vite logo" width="120" src="./assets/vite.svg" />
+  <img alt="Vue logo" width="120" src="./assets/logo.png" />
+  <img alt="Electron logo" width="120" src="./assets/electron.png" />
+  <img alt="TS logo" width="120" src="./assets/ts.png" />
+  <HelloWorld msg="Vite + Vue 3 + Electron + TypeScript" />
+  <br />
+  <p class="plugins">Plugins</p>
+  <img alt="vue router logo" width="120" src="./assets/vueRouter.png" />
+  <img alt="pinia logo" width="120" src="./assets/pinia.svg" />
+</template>
 
-
-
-</style>
-
-<style lang="scss">
-@import "@/style/_colors.scss";
-@import "@/style/ui_elements.scss";
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
-button {
-  outline: none;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Open Sans', sans-serif;
-  overflow-y: hidden;
-}
-
+<style>
 #app {
-  background: var(--main-window-background);
-  overflow-y: hidden;
-  &, span {
-    color: var(--primary-text);
-  }
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
-
-.page-component-fade-enter-active {
-  transition: all 0.2s ease-out;
+img {
+  margin: 5px;
 }
-.page-component-fade-leave-active {
-  transition: all 0.2s ease-in;
-}
-.page-component-fade-enter,
-.page-component-fade-leave-to {
-  opacity: 0;
-}
-.page-component-fade-enter {
-  transform: translateX(32px);
-}
-.page-component-fade-leave-to {
-  transform: translateX(-32px);
+.plugins {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
 }
 </style>
