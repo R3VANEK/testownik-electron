@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import LandingPage from '@/components/LandingPage'
-import Quiz from '@/components/Quiz'
+import LandingPage from '@/views/LandingPage'
+import QuizPage from '@/views/QuizPage'
 
 Vue.use(Router)
 
@@ -17,7 +17,7 @@ export default new Router({
       path: '/quiz',
       name: 'quiz',
       props: true,
-      component: Quiz
+      component: QuizPage
     },
     {
       path: '*',
